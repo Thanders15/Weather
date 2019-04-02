@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<img>
+Obecna temperatura:
+<h1 th:if="${weather != null}" th:text="${weather.getMainData().getTemp()}"></h1>
+Cisnienie w hPa:
+<h1 th:if="${weather != null}" th:text="${weather.getMainData().getPressure()}"></h1>
+Wiglotnosc w %:
+<h1 th:if="${weather != null}" th:text="${weather.getMainData().getHumidity()}"></h1>
+Zachmurzenie w %:
+<h1 th:if="${weather != null}" th:text="${weather.getCloudData().getClouds()}"></h1>
+
+<img th:if="${weather != null && weather.getMainData().getTemp() > 12}" src="plaża.jpg"></br>
+Srednia temperatura na najblizsze 5 dni:
+<h2 th:text="${averageTempForNext5days}"></h2>
+<form action="/" method="post">
+    Nazwa miasta: <input type="text" name="city"></br>
+    <input type="submit" value="Wyślij!">
+</form>
+
+</body>
+</html>
